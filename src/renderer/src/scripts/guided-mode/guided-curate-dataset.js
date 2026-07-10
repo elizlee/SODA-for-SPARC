@@ -1424,7 +1424,7 @@ window.guidedOpenAddOrEditContributorSwal = async (contributorIdToEdit = null) =
         <p class="guided--text-input-instructions mb-0 text-left">
           Should follow this format: Last, First Middle. For information on what family name prefixes are allowed <a target="_blank" href="https://en.wikipedia.org/wiki/List_of_family_name_affixes">click here</a>.
         </p>
-        <label class="guided--form-label mt-md required">ORCID:</label>
+        <label class="guided--form-label mt-md required">ORCID or email address:</label>
         <input class="guided--input" id="guided-contributor-orcid" type="text" placeholder="https://orcid.org/0000-0000-0000-0000 OR 0000-0000-0000-0000 OR contributor@email.com" value="${defaultOrcid}" />
         <p class="guided--text-input-instructions mb-0 text-left">
           If your contributor does not have an ORCID, have the contributor <a target="_blank" href="https://orcid.org/register">sign up for one here</a> or use their email address.
