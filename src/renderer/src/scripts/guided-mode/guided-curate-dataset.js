@@ -13,6 +13,7 @@ import {
   CONTRIBUTORS_FIRST_NAME_REGEX,
   orcidIsValid,
   affiliationRorIsValid,
+  EMAIL_REGEX,
 } from "./metadata/contributors/contributorsValidation";
 import { generateAlertElement } from "./metadata/utils";
 import { clientError, userErrorMessage } from "../others/http-error-handler/error-handler";
@@ -1424,9 +1425,9 @@ window.guidedOpenAddOrEditContributorSwal = async (contributorIdToEdit = null) =
           Should follow this format: Last, First Middle. For information on what family name prefixes are allowed <a target="_blank" href="https://en.wikipedia.org/wiki/List_of_family_name_affixes">click here</a>.
         </p>
         <label class="guided--form-label mt-md required">ORCID:</label>
-        <input class="guided--input" id="guided-contributor-orcid" type="text" placeholder="https://orcid.org/0000-0000-0000-0000 OR 0000-0000-0000-0000" value="${defaultOrcid}" />
+        <input class="guided--input" id="guided-contributor-orcid" type="text" placeholder="https://orcid.org/0000-0000-0000-0000 OR 0000-0000-0000-0000 OR contributor@email.com" value="${defaultOrcid}" />
         <p class="guided--text-input-instructions mb-0 text-left">
-          If your contributor does not have an ORCID, have the contributor <a target="_blank" href="https://orcid.org/register">sign up for one here</a>.
+          If your contributor does not have an ORCID, have the contributor <a target="_blank" href="https://orcid.org/register">sign up for one here</a> or use their email address.
         </p>
         <label class="guided--form-label mt-md required">Affiliation:</label>
         <input class="guided--input" id="guided-contributor-affiliation-input" type="text" placeholder="Institution ROR" value="${defaultAffiliation}" />
@@ -1550,21 +1551,27 @@ window.guidedOpenAddOrEditContributorSwal = async (contributorIdToEdit = null) =
 
       if (!orcidIsValid(contributorOrcidInput)) {
         return Swal.showValidationMessage(
-          "ORCID must be in the format https://orcid.org/0000-0000-0000-0000 OR 0000-0000-0000-0000"
+          "ORCID must be in the format https://orcid.org/0000-0000-0000-0000 OR 0000-0000-0000-0000 OR contributor@email.com"
         );
       }
 
       // Normalize ORCID (remove URL prefix if present)
       const normalizedOrcid = contributorOrcidInput.replace(/^https?:\/\/orcid\.org\//i, "");
 
-      // Validate ORCID using ORCID library (checksum + structure)
-      if (!ORCID.isValid(normalizedOrcid)) {
-        return Swal.showValidationMessage(
-          "ORCID iD is not valid. Please check the number and try again."
-        );
-      }
+      const orcidIsEmail = EMAIL_REGEX.test(normalizedOrcid)
 
-      const storedOrcid = ORCID.toUriWithProtocol(normalizedOrcid);
+      // Validate ORCID using ORCID library (checksum + structure)
+      let storedOrcid = "";
+      if (!orcidIsEmail) {
+        if (!ORCID.isValid(normalizedOrcid)) {
+          return Swal.showValidationMessage(
+            "ORCID iD or email is not valid. Please check the number or address and try again."
+          );
+        }
+        storedOrcid = ORCID.toUriWithProtocol(normalizedOrcid);
+      } else {
+        storedOrcid = normalizedOrcid;
+      }
 
       // validate that the affiliation is a valid ROR
       if (!affiliationRorIsValid(contributorAffiliation)) {

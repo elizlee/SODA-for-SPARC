@@ -47,7 +47,7 @@ export const sortContributorRoles = (rolesArray) => {
 
 export const addContributor = (
   contributor_name,
-  contributor_orcid_id, // string: ORCID
+  contributor_orcid_id, // string: ORCID or email address
   contributor_affiliation, // string: affiliation
   contributor_roles // array: roles
 ) => {

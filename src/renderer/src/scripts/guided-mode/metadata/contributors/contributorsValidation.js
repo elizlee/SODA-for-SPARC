@@ -71,6 +71,9 @@ export const CONTRIBUTORS_FIRST_NAME_REGEX = /^[^,]+$/;
 // Export the pattern for debugging/testing
 export const FAMILY_PREFIX_PATTERN_STRING = FAMILY_PREFIX_PATTERN;
 
+// Export the email pattern
+export const EMAIL_REGEX = /\S+@\S+\.\S+/;
+
 export const affiliationRorIsValid = (ror) => {
   const rorRegex = /^https:\/\/ror\.org\/0[0-9a-z]{6}[0-9]{2}$/;
   return rorRegex.test(ror);
@@ -78,5 +81,5 @@ export const affiliationRorIsValid = (ror) => {
 
 export const orcidIsValid = (orcid) => {
   const orcidRegex = /^(?:https:\/\/orcid\.org\/)?000[09]-00[01][0-9]-[0-9]{4}-[0-9]{3}([0-9]|X)$/;
-  return orcidRegex.test(orcid);
+  return (orcidRegex.test(orcid) || EMAIL_REGEX.test(orcid));
 };
