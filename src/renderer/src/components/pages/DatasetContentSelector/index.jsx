@@ -11,62 +11,24 @@ import {
 } from "../../../stores/slices/datasetContentSelectorSlice";
 
 export const contentOptionsMap = {
-  subjects: {
-    label: "Did your research involve human or animal subjects?",
-    dropDownDescription:
-      "Select yes if you gathered data directly from living organisms such as human participants, laboratory animals, or other biological subjects. Examples include medical patients, experimental animals, behavioral study participants, etc. Your subject will have metadata and in many cases, data files.",
-    ml: 0,
-  },
-  samples: {
-    label: "Did you collect physical samples from your subjects?",
-    dropDownDescription:
-      "Select yes if you physically removed material from a subject to create a sample that exists independently of the subject. Examples include tissue biopsies, blood draws, urine samples, swabs, or any specimen that can be stored, processed, or analyzed separately from the subject.",
-    requiresAnswer: ["subjects"],
-    ml: 10,
-  },
-  derivedSamples: {
-    label: "Did you derive further samples from your physical samples (e.g., RNA, plasma)?",
-    dropDownDescription:
-      "Examples of a derived sample include the following: tissue sections, cell cultures, extracted RNA or protein. View the decision tree below if you are unsure about whether to answer yes or no to this question.",
-    requiresAnswer: ["subjects", "samples"],
-    imgSrc: "./img/derivedsamplesv5.png",
-    alt: "A decision tree depicting how to determine if your dataset has derived samples.",
-    ml: 20,
-  },
   subjectSites: {
     label:
       "Did you collect data from multiple distinct locations within each subject (e.g., different brain regions, electrode placements)?",
     dropDownDescription:
-      "Examples include collecting data from multiple electrodes placed on a subject, or gathering readings from the left eye and right eye of a subject. For each location you will later provide location specific metadata and data files. View the decision tree below if you are unsure about whether to answer yes or no to this question.",
-    requiresAnswer: ["subjects"],
-    imgSrc: "./img/subjectsitesv5.png",
-    alt: "A decision tree depicting how to determine if your dataset has site data taken from subjects.",
-
-    ml: 10,
+      "Select yes if you collected data from multiple distinct locations within individual subjects (e.g., 3 different brain regions in the same subject). Each location requires separate metadata. Examples include recordings from different brain regions, measurements from multiple organs, or sensors placed on different body locations within the same subject.",
+    requiresAnswer: [],
+    ml: 0,
   },
-  sampleSites: {
-    label:
-      "Did you collect data from multiple distinct locations within each sample (e.g., different regions of a tissue section)?",
-    dropDownDescription:
-      "Examples include collecting imaging data from different locations of a tissue section. For each location you will later provide location specific metadata and data files. View the decision tree below if you are unsure about whether to answer yes or no to this question.",
-    requiresAnswer: ["subjects", "samples"],
-    imgSrc: "./img/samplesitesv5.png",
-    alt: "A decision tree depicting how to determine if your dataset has site data taken from samples.",
-    ml: 20,
-  },
-
   performances: {
     label:
       "Did you collect data from subjects or samples across multiple sessions or timepoints using the same experimental protocol (e.g., sequential imaging sessions, varied stimulation parameters)?",
     dropDownDescription:
-      "Examples include collecting data from: follow-up measurements, varied stimulation parameters, different behavioral tests, sequential imaging sessions, or any case where you need to track which protocol or time point generated specific data. View the decision tree below if you are unsure about whether to answer yes or no to this question.",
-    requiresAnswer: ["subjects"],
-    imgSrc: "./img/performancesv5.png",
-    alt: "A decision tree depicting how to determine if your dataset has data collcted during performances. ",
-    ml: 10,
+      "Select yes if you performed procedures on the same subjects at different times or under different conditions. Examples include: follow-up measurements, varied stimulation parameters, different behavioral tests, sequential imaging sessions, or any case where you need to track which protocol or time point generated specific data.",
+    requiresAnswer: [],
+    ml: 0,
   },
   Code: {
-    label: "Does your data include any code?",
+    label: "Does your data include any software?",
     dropDownDescription:
       "Select yes if your data contains computational tools, scripts, or analysis pipelines that were used to generate or analyze your data. This includes custom code, analysis scripts, and simulation software relevant to understanding your results.",
 
