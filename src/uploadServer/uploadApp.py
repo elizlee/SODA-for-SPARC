@@ -1,7 +1,7 @@
 from flask import Flask, request
 import os
 import requests
-from pennsieve2.pennsieve import Pennsieve
+from pennsieve import Pennsieve
 import time
 from configparser import ConfigParser
 import boto3
