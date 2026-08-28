@@ -113,56 +113,6 @@ export const guidedSetDOIUI = (datasetDOI) => {
   }
 };
 
-// Withdraw dataset from review (guided mode only)
-const withdrawDatasetSubmission = async () => {
-  try {
-    const { value: withdraw } = await Swal.fire({
-      title: "Unshare this dataset from Curation Team?",
-      icon: "warning",
-      showDenyButton: true,
-      confirmButtonText: "Yes",
-      denyButtonText: "No",
-      allowEscapeKey: false,
-      allowOutsideClick: false,
-      heightAuto: false,
-      backdrop: "rgba(0,0,0, 0.4)",
-      timerProgressBar: false,
-    });
-
-    if (!withdraw) return false;
-
-    await window.showPublishingStatus(withdrawDatasetCheck, "guided");
-    return true;
-  } catch (error) {
-    window.log.error(error);
-    console.error(error);
-
-    Swal.fire({
-      title: "Could not withdraw dataset from publication!",
-      html: `${userErrorMessage(error)}`,
-      icon: "error",
-      heightAuto: false,
-      confirmButtonText: "Ok",
-      backdrop: "rgba(0,0,0, 0.4)",
-      showClass: {
-        popup: "animate__animated animate__fadeInDown animate__faster",
-      },
-      hideClass: {
-        popup: "animate__animated animate__fadeOutUp animate__faster",
-      },
-    });
-
-    window.logGeneralOperationsForAnalytics(
-      "Error",
-      window.DisseminateDatasetsAnalyticsPrefix.DISSEMINATE_REVIEW,
-      window.AnalyticsGranularity.ALL_LEVELS,
-      ["Withdraw dataset"]
-    );
-
-    return false;
-  }
-};
-
 /**
  * Submits the current dataset for review by the SPARC Curation Team.
  * @param {string} embargoReleaseDate - Optional embargo release date. Empty string means immediate publication.
@@ -222,8 +172,11 @@ const guidedSubmitDatasetForReview = async (embargoReleaseDate = "") => {
       hideClass: { popup: "animate__animated animate__zoomOut animate__faster" },
     });
   } catch (error) {
-    console.error("[Dataset Submission] Error:", error);
-    window.log.error("[Dataset Submission] Error:", error);
+    window.log?.error?.(
+      `[Dataset Submission] Error: ${
+        error instanceof Error ? error.message : JSON.stringify(error)
+      }`
+    );
 
     // Track failure
     window.electron.ipcRenderer.send(
@@ -281,8 +234,11 @@ const guidedUnSubmitDatasetForReview = async () => {
     await window.showPublishingStatus("noClear", "guided");
     // Track success
   } catch (error) {
-    console.error("[Dataset Unsubmission] Error:", error);
-    window.log.error("[Dataset Unsubmission] Error:", error);
+    window.log.error(
+      `[Dataset Unsubmission] Error: ${
+        error instanceof Error ? error.message : JSON.stringify(error)
+      }`
+    );
   }
 };
 
@@ -317,8 +273,11 @@ export const guidedSetPublishingStatusUI = async () => {
       $("#guided-unshare-dataset-with-curation-team-message").addClass("hidden");
     }
   } catch (error) {
-    console.error("[PrepublishingFlow] Error fetching publishing status:", error);
-    window.log.error("[PrepublishingFlow] Error fetching publishing status:", error);
+    window.log.error(
+      `[PrepublishingFlow] Error fetching publishing status: ${
+        error instanceof Error ? error.message : JSON.stringify(error)
+      }`
+    );
     await Swal.fire({
       title: "Error fetching publishing status",
       html: userErrorMessage(error),
@@ -466,8 +425,11 @@ window.guidedModifyCurationTeamAccess = async (action) => {
 
       setButtonState(shareBtn, { disabled: false, loading: false });
     } catch (error) {
-      console.error("[Curation Access] Share flow error:", error);
-      window.log.error("[Curation Access] Share flow error:", error);
+      window.log.error(
+        `[Curation Access] Share flow error: ${
+          error instanceof Error ? error.message : JSON.stringify(error)
+        }`
+      );
       setButtonState(shareBtn, { disabled: false, loading: false });
       await Swal.fire({
         title: "Failed to share dataset with Curation Team",
@@ -518,8 +480,11 @@ window.guidedModifyCurationTeamAccess = async (action) => {
       });
       setButtonState(unshareBtn, { disabled: false, loading: false });
     } catch (error) {
-      console.error("[Curation Access] Unshare flow error:", error);
-      window.log.error("[Curation Access] Unshare flow error:", error);
+      window.log.error(
+        `[Curation Access] Unshare flow error: ${
+          error instanceof Error ? error.message : JSON.stringify(error)
+        }`
+      );
       setButtonState(unshareBtn, { disabled: false, loading: false });
       await Swal.fire({
         title: "Failed to unshare dataset from Curation Team",
@@ -827,7 +792,11 @@ window.guidedCreateLocalManifestCopy = async () => {
       message: "Manifest file successfully generated",
     });
   } catch (error) {
-    window.log.error("[guidedCreateLocalManifestCopy] Error generating manifest:", error);
+    window.log.error(
+      `[guidedCreateLocalManifestCopy] Error generating manifest: ${
+        error instanceof Error ? error.message : JSON.stringify(error)
+      }`
+    );
     clientError(error);
   }
 };
@@ -3059,6 +3028,34 @@ ffmDragDropElementId.addEventListener("drop", async (event) => {
     curationMode: "free-form",
     useContentsOfFolder: true,
   });
+});
+
+// Event delegation for entity bucketing data importer (handles re-renders)
+document.getElementById("guided_curate_dataset-tab").addEventListener("click", (event) => {
+  if (event.target.closest("#entity-bucketing-data-importer-dropzone")) {
+    event.preventDefault();
+    const entityType = useGlobalStore.getState().entityType;
+    const selectedHierarchyEntity = useGlobalStore.getState().selectedHierarchyEntity;
+    window.electron.ipcRenderer.send("open-folders-organize-datasets-dialog", {
+      importRelativePath: `data/${entityType}/${selectedHierarchyEntity?.id}/`,
+    });
+  }
+});
+
+document.getElementById("guided_curate_dataset-tab").addEventListener("drop", (event) => {
+  if (event.target.closest("#entity-bucketing-data-importer-dropzone")) {
+    event.preventDefault();
+    const entityType = useGlobalStore.getState().entityType;
+    const selectedHierarchyEntity = useGlobalStore.getState().selectedHierarchyEntity;
+    const itemsDroppedInFileExplorer = Array.from(event.dataTransfer.files).map(
+      (file) => file.path
+    );
+    window.electron.ipcRenderer.send("file-explorer-dropped-datasets", {
+      filePaths: itemsDroppedInFileExplorer,
+      importRelativePath: `data/${entityType}/${selectedHierarchyEntity?.id}/`,
+      curationMode: "guided",
+    });
+  }
 });
 
 $("#guided-button-add-additional-link").on("click", async () => {

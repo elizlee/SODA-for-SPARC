@@ -34,14 +34,14 @@ export const contentOptionsMap = {
 
     ml: 0,
   },
-  Protocol: {
+  protocol: {
     label:
       "Does your data include protocol files describing experimental or computational procedures?",
     dropDownDescription:
       "Select Yes if your dataset contains documents that describe how experiments were conducted, how samples were processed, or how data was analyzed (e.g., SOPs, methods documents, workflows, or Protocols.io exports).",
     ml: 0,
   },
-  Docs: {
+  docs: {
     label:
       "Did you include any documentation files (e.g., README, data dictionary, PDF award file)?",
     dropDownDescription:

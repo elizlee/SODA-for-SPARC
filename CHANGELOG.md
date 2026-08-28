@@ -5,17 +5,38 @@ All notable changes to SODA will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## v 18.2.0 - 2026-07-09
+## v 19.0.0 - 2026-08-27
+
+## Feature Additions:
+
+- Added the entity bucketing workflow, allowing users to add data directly to entities and create an entity-structured dataset structure.
+- The submission file supports multiple milestone completion dates.
+- The Pennsieve Agent now notifies users of the latest version of the Pennsieve Agent as well as the last tested version of the Pennsieve Agent. We recommend users use both if they have issues.
+
+## Bug fixes:
+
+- Fixed a bug allowing Performance end times to be before start times
+- SODA supports all single extension files and has an expanded list of double extensions. If double extension not recognized file is still imported.
+- If a save progress file has user information (workspace and profile) associated with it and a separate user tries to open it, SODA will now show a warning asking the user to sign in with prior creddentials or else reset their upload progress if any was made. This prevents users from accidentally overwriting another user's progress file or accidentally uploading to a different workspace than intended.
+- The progress bar for Upload Dataset and Prepare Dataset Step-by-Step will properly reset/continue where left off after an upload fails and the user closes SODA or exits and resumes the upload.
+
+## v 18.2.0 - 2026-07-02
 
 ## Feature Additions:
 
 - Prepare Dataset Step-by-Step has new visual aids that break down the SDS and SDS entities.
 - Prepare Dataset Step-by-Step has been optimized to reduce file explorer re-renders when opening pages and when its state changes, such as during entity selection or when expanding and collapsing folders.
+- UD verify files countdown timer is now a live timer.
 
 ## Bug fixes:
 
 - PDSS Entity Addition Method cards have been made the same size.
-- UD verify files countdown timer is now a live timer.
+- The generate-option key required to upload to Pennsieve was not set when the user saves and exits on the Pennsieve sign in page. This is because the page to choose generate-option is skipped upon resuming. This is fixed.
+- If an upload failed 3 times in PDSS, the user leaves, then resumes progress, and starts the upload again, the UI tells the user they cannot upload to their dataset because it already exists. The user is then informed that they need to rename their dataset. This is fixed. The user can now upload to their dataset after resuming progress.
+- If a user uploads their dataset in UD and chooses the skip option for existing files and nothing is uploaded, the UI will keep retrying the upload. This is fixed. Now it works as intended and a SWAL appears telling the user that nothing needs to be uploaded.
+- Uploading to an existing dataset will always overestimate the dataset size. This is fixed.
+- The rename step in the upload workflow for PDSS and UD was not showing the progress of files being renamed. This is fixed.
+- The progress bar state was not being reset after an upload in PDSS or UD. This is fixed.
 
 ## v 18.1.0 - 2026-06-16
 
