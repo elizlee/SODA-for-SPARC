@@ -63,6 +63,48 @@ export const openPagePrepareMetadata = async (targetPageID) => {
     renderContributorsTable();
   }
 
+  if (targetPageID === "guided-acupoint-stimulation-metadata-tab") {
+    const acupointMetadata = window.sodaJSONObj["dataset_metadata"]?.["acupoint_metadata"] || {};
+    const styleOfAcupuncture = acupointMetadata?.["style_of_acupuncture"] || "";
+    const reasoningForTreatment = acupointMetadata?.["reasoning_for_treatment"] || "";
+    const extentTreatmentVaried = acupointMetadata?.["extent_treatment_varied"] || "";
+    const numNeedleInsertions = acupointMetadata?.["num_needle_insertions"] || "";
+    const namesOfPoints = acupointMetadata?.["names_of_points"] || "";
+    const depthOfInsertion = acupointMetadata?.["depth_of_insertion"] || "";
+    const responsesSought = acupointMetadata?.["responses_sought"] || "";
+    const needleStimulation = acupointMetadata?.["needle_stimulation"] || "";
+    const needleRetentionTime = acupointMetadata?.["needle_retention_time"] || "";
+    const needleDiameter = acupointMetadata?.["needle_diameter"] || "";
+    const needleLength = acupointMetadata?.["needle_length"] || "";
+    const needleManuMaterial = acupointMetadata?.["needle_manufacturer_material"] || "";
+    const numTreatmentSessions = acupointMetadata?.["num_treatment_sessions"] || "";
+    const freqTreatmentSessions = acupointMetadata?.["frequency_treatment_sessions"] || "";
+    const otherInterventionDetails = acupointMetadata?.["other_intervention_details"] || "";
+    const treatmentSetting = acupointMetadata?.["treatment_setting"] || "";
+
+    document.getElementById("guided-asm-style-of-acupuncture").value = styleOfAcupuncture;
+    document.getElementById("guided-asm-reasoning-for-treatment").value = reasoningForTreatment;
+    document.getElementById("guided-asm-extent-treatment-varied").value = extentTreatmentVaried;
+    document.getElementById("guided-asm-num-needle-insertions").value = numNeedleInsertions;
+    document.getElementById("guided-asm-names-of-points").value = namesOfPoints;
+    document.getElementById("guided-asm-depth-of-insertion").value = depthOfInsertion;
+    document.getElementById("guided-asm-responses-sought").value = responsesSought;
+    document.getElementById("guided-asm-needle-stimulation").value = needleStimulation;
+    document.getElementById("guided-asm-needle-retention-time").value = needleRetentionTime;
+    document.getElementById("guided-asm-needle-diameter").value = needleDiameter;
+    document.getElementById("guided-asm-needle-length").value = needleLength;
+    document.getElementById("guided-asm-needle-manufacturer-material").value = needleManuMaterial;
+    document.getElementById("guided-asm-num-treatment-sessions").value = numTreatmentSessions;
+    document.getElementById("guided-asm-freq-treatment-sessions").value = freqTreatmentSessions;
+    document.getElementById("guided-asm-other-intervention-details").value = otherInterventionDetails;
+    document.getElementById("guided-asm-treatment-setting").value = treatmentSetting;
+
+    // setStyleOfAcupuncture(styleOfAcupuncture);
+    // setReasoningForTreatment(reasoningForTreatment);
+    // setExtentTreatmentVaried(extentTreatmentVaried);
+    // setNumNeedleInsertions(numNeedleInsertions);
+  }
+
   if (targetPageID === "guided-protocols-tab") {
     renderProtocolsTable();
   }

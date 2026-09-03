@@ -828,6 +828,193 @@
           </div>
         </div>
 
+        <div
+          id="guided-acupoint-stimulation-metadata-tab"
+          data-page-name="Acupoint Stimulation Metadata"
+          class="guided--page gm"
+        >
+          <div class="guided--section">
+            <h1 class="text-sub-step-title">Acupoint stimulation metadata</h1>
+            <p class="help-text">
+              Provide details about the acupoint stimulation associated with this
+              dataset in the interface below.
+            </p>
+
+            <div class="guided--section neumorphic mt-xl">
+              <h2 class="text-sub-step-title mt-0">Acupuncture rationale</h2>
+              <label class="guided--form-label mt-xl required">Style of acupuncture</label>
+              <input
+                class="guided--input"
+                id="guided-asm-style-of-acupuncture"
+                type="text"
+                placeholder="Enter the style of acupuncture used in the study"
+                required
+              ></input>
+              <p class="guided--text-input-instructions mb-0">
+                e.g., Traditional Chinese Medicine, Japanese, Korean, Western medical, Five Element, ear acupuncture, etc.<br />
+              </p>
+              <label class="guided--form-label mt-xl">Reasoning for treatment provided</label>
+              <textarea
+                class="guided--input guided--text-area"
+                id="guided-asm-reasoning-for-treatment"
+                type="text"
+                placeholder="Enter the reasoning for treatment provided"
+                style="height: 7.5em"
+              ></textarea>
+              <p class="guided--text-input-instructions mb-0">
+                Based on historical context, literature sources and/or consensus methods, with references where appropriate<br />
+              </p>
+              <label class="guided--form-label mt-xl">Extent to which treatment was varied</label>
+              <textarea
+                class="guided--input guided--text-area"
+                id="guided-asm-extent-treatment-varied"
+                type="text"
+                placeholder="Enter the extent to which treatment was varied"
+                style="height: 7.5em"
+              ></textarea>
+              <p class="guided--text-input-instructions mb-0">
+                Describe the extent to which treatment was varied<br />
+              </p>
+            </div>
+
+            <div class="guided--section neumorphic mt-xl">
+              <h2 class="text-sub-step-title mt-0">Details of Needling</h2>
+              <label class="guided--form-label mt-xl required">Number of needle insertions per subject per session</label>
+              <input
+                class="guided--input"
+                id="guided-asm-num-needle-insertions"
+                type="text"
+                placeholder="Enter the number of needle insertions"
+                required
+              ></input>
+              <p class="guided--text-input-instructions mb-0">
+                Include mean and range where relevant<br />
+              </p>
+              <label class="guided--form-label mt-xl required">Names of points used</label>
+              <textarea
+                class="guided--input guided--text-area"
+                id="guided-asm-names-of-points"
+                type="text"
+                placeholder="Enter the names of points used"
+                style="height: 7.5em"
+              ></textarea>
+              <p class="guided--text-input-instructions mb-0">
+                Names (or location if no standard name) of points used (uni-/bilateral)<br />
+              </p>
+              <label class="guided--form-label mt-xl">Depth of insertion</label>
+              <input
+                class="guided--input"
+                id="guided-asm-depth-of-insertion"
+                type="text"
+                placeholder="Enter the depth of insertion"
+              ></input>
+              <p class="guided--text-input-instructions mb-0">
+                Based on a specified unit of measurement or on a particular tissue level<br />
+              </p>
+              <label class="guided--form-label mt-xl">Responses sought</label>
+              <textarea
+                class="guided--input guided--text-area"
+                id="guided-asm-responses-sought"
+                type="text"
+                placeholder="Enter the responses sought"
+                style="height: 7.5em"
+              ></textarea>
+              <p class="guided--text-input-instructions mb-0">
+                e.g., <i>de qi</i> or muscle twitch response<br />
+              </p>
+              <label class="guided--form-label mt-xl required">Needle stimulation</label>
+              <input
+                class="guided--input"
+                id="guided-asm-needle-stimulation"
+                type="text"
+                placeholder="Enter the needle stimulation"
+              ></input>
+              <p class="guided--text-input-instructions mb-0">
+                e.g., manual or electrical<br />
+              </p>
+              <label class="guided--form-label mt-xl">Needle retention time</label>
+              <input
+                class="guided--input"
+                id="guided-asm-needle-retention-time"
+                type="text"
+                placeholder="Enter the needle retention time"
+              ></input>
+              <div class="guided--section asm-sub-section">
+                <div class="guided--section sub-section">
+                  <label class="guided--form-label mt-xl required">Needle diameter</label>
+                  <input
+                    class="guided--input"
+                    id="guided-asm-needle-diameter"
+                    type="text"
+                    placeholder="Diameter"
+                  ></input>
+                </div>
+                <div class="guided--section sub-section">
+                  <label class="guided--form-label mt-xl required">Needle length</label>
+                  <input
+                    class="guided--input"
+                    id="guided-asm-needle-length"
+                    type="text"
+                    placeholder="Length"
+                  ></input>
+                </div>
+              </div>
+              <label class="guided--form-label mt-xl required">Needle manufacturer or material</label>
+              <input
+                class="guided--input"
+                id="guided-asm-needle-manufacturer-material"
+                type="text"
+                placeholder="Enter the needle manufacturer or material"
+              ></input>
+            </div>
+
+            <div class="guided--section neumorphic mt-xl">
+              <h2 class="text-sub-step-title mt-0">Treatment Regimen</h2>
+              <label class="guided--form-label mt-xl required">Number of treatment sessions</label>
+              <input
+                class="guided--input"
+                id="guided-asm-num-treatment-sessions"
+                type="text"
+                placeholder="Enter the number of treatment sessions"
+              ></input>
+              <label class="guided--form-label mt-xl required">Frequency and duration of treatment sessions</label>
+              <textarea
+                class="guided--input guided--text-area"
+                id="guided-asm-freq-treatment-sessions"
+                type="text"
+                placeholder="Enter the frequency/duration of treatment sessions"
+                style="height: 7.5em"
+              ></textarea>
+            </div>
+
+            <div class="guided--section neumorphic mt-xl">
+              <h2 class="text-sub-step-title mt-0">Components of Treatment</h2>
+              <label class="guided--form-label mt-xl required">Details of other interventions</label>
+              <textarea
+                class="guided--input guided--text-area"
+                id="guided-asm-other-intervention-details"
+                type="text"
+                placeholder="Enter the details of other interventions"
+                style="height: 7.5em"
+              ></textarea>
+              <p class="guided--text-input-instructions mb-0">
+                The details of other interventions administered to the acupuncture group<br />
+              </p>
+              <label class="guided--form-label mt-xl">Setting and context of treatment</label>
+              <textarea
+                class="guided--input guided--text-area"
+                id="guided-asm-treatment-setting"
+                type="text"
+                placeholder="Enter the setting and context of treatment"
+                style="height: 7.5em"
+              ></textarea>
+              <p class="guided--text-input-instructions mb-0">
+                Include instructions to practitioners, and information and explanations to patieints<br />
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div id="guided-protocols-tab" class="guided--page gm" data-page-name="Dataset protocols">
           <div class="guided--section">
             <h1 class="text-sub-step-title">Dataset protocols</h1>

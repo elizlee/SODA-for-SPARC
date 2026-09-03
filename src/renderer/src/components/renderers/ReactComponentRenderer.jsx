@@ -38,6 +38,7 @@ import DataCategoriesQuestionnairePage from "../pages/DataCategoriesQuestionnair
 import InfoList from "../shared/InfoList";
 import DatasetStructureVisualAid from "../common/DatasetStructureVisualization";
 import DataBucketingPage from "../pages/DataBucketingPage";
+import AcupointStimulationMetadataForm from "../pages/AcupointStimulationMetadataForm";
 
 // Wait for the HTML sections to be added to the DOM before rendering React components
 while (!window.htmlSectionsAdded) {

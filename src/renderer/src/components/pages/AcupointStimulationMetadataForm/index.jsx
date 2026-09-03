@@ -61,19 +61,19 @@ const AcupointStimulationMetadataForm = () => {
   );
   const numNeedleInsertions = useGlobalStore((state) => state.numNeedleInsertions);
   const pointsUsed = useGlobalStore((state) => state.pointsUsed);
-  const depthofInsertion = useGlobalStore((state) => state.depthOfInsertion);
+  const depthOfInsertion = useGlobalStore((state) => state.depthOfInsertion);
   const responsesSought = useGlobalStore((state) => state.responsesSought);
   const needleStimulation = useGlobalStore((state) => state.needleStimulation);
   const needleRetentionTime = useGlobalStore((state) => state.needleRetentionTime);
   const needleDiameter = useGlobalStore((state) => state.needleDiameter);
   const needleLength = useGlobalStore((state) => state.needleLength);
   const needleManuMaterial = useGlobalStore((state) => state.needleManuMaterial);
-  const numTreatmentSessions = useGlobalStore((state) => numTreatmentSessions);
+  const numTreatmentSessions = useGlobalStore((state) => state.numTreatmentSessions);
   const freqTreatmentSessions = useGlobalStore(
     (state) => state.freqTreatmentSessions
   );
   const otherInterventionDetails = useGlobalStore(
-    (state) => otherInterventionDetails
+    (state) => state.otherInterventionDetails
   );
   const treatmentSetting = useGlobalStore((state) => state.treatmentSetting);
 //  const asm_id = useGlobalStore((state) => state.asm_id);
@@ -91,7 +91,7 @@ const AcupointStimulationMetadataForm = () => {
         <TextInput>
           label="Style of acupuncture"
           placeholder="Enter the style of acupuncture used in the study"
-          description="e.g., Traditional Chinese Medicine, Japnese Korean, Western medical, Five Element, ear acupuncture, etc."
+          description="e.g., Traditional Chinese Medicine, Japnese, Korean, Western medical, Five Element, ear acupuncture, etc."
           value={styleOfAcupuncture}
           onChange={(event) => setStyleOfAcupuncture(event.target.value)}
           required
@@ -99,7 +99,7 @@ const AcupointStimulationMetadataForm = () => {
         <TextInput>
           label="Reasoning for treatment provided"
           placeholder="Enter the reasoning for treatment provided"
-          description="Please enter the reasoing for treatment provided based on historical context, literature sources and/or consensus methods, with references where appropriate"
+          description="Please enter the reasoning for treatment provided based on historical context, literature sources and/or consensus methods, with references where appropriate"
           value={reasoningForTreatment}
           onChange={(event) => setReasoningForTreatment(event.target.value)}
         </TextInput>
@@ -128,6 +128,7 @@ const AcupointStimulationMetadataForm = () => {
           label="Names of points used"
           placeholder="Enter the names/locations of points used"
           description="Names (or location if no standard name) of points used (uni-/bilateral)"
+          minRows={3}
           value={pointsUsed}
           onChange={(event) => setPointsUsed(event.target.value)}
           required
@@ -213,6 +214,7 @@ const AcupointStimulationMetadataForm = () => {
           label="Details of other interventions"
           placeholder="Enter the details of other interventions"
           description="Please enter the details of other interventions administered to the acupuncture group"
+          minRows={3}
           value={otherInterventionDetails}
           onChange={(event) => setOtherInterventionDetails(event.target.value)}
           required
@@ -220,7 +222,8 @@ const AcupointStimulationMetadataForm = () => {
         <textarea>
           label="Setting and context of treatment"
           placeholder="Enter the setting and context of treatment"
-          description="Please enter the setting and context of treatment"
+          description="Please enter the setting and context of treatment, including instructions to practitioners, and information and explanations to patients"
+          minRows={3}
           value={treatmentSetting}
           onChange={(event) => setTreatmentSetting(event.target.value)}
         </textarea>

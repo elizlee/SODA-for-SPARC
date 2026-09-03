@@ -299,6 +299,13 @@
   pointer-events: none;
 }
 
+.guided--section .asm-sub-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
 .guided--section .sub-section {
   display: flex;
   flex-direction: column;

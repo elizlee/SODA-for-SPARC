@@ -62,6 +62,7 @@ import { createStandardizedDatasetStructure } from "../../utils/datasetStructure
 import { setCurrentStep } from "../../../stores/slices/stepperSlice.js";
 import { setGuidedModeSidebarDatasetName } from "../../../stores/slices/sideBarSlice.js";
 import { PAGE_CONFIG } from "./pageConfig.js";
+import { setExtentTreatmentVaried, setNumNeedleInsertions, setReasoningForTreatment, setStyleOfAcupuncture } from "../../../stores/slices/acupointMetadataSlice.js";
 
 while (!window.baseHtmlLoaded) {
   await new Promise((resolve) => setTimeout(resolve, 100));

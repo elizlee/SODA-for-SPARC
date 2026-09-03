@@ -281,6 +281,86 @@ export const savePagePrepareMetadata = async (pageBeingLeftID, movingForward) =>
     window.sodaJSONObj["dataset_metadata"]["samples"] = samplesMetadata;
   }
 
+  if (pageBeingLeftID === "guided-acupoint-stimulation-metadata-tab") {
+    const styleOfAcupunctureInput = document.getElementById("guided-asm-style-of-acupuncture");
+    const reasoningForTreatmentInput = document.getElementById("guided-asm-reasoning-for-treatment");
+    const extentTreatmentVariedInput = document.getElementById("guided-asm-extent-treatment-varied");
+    const numNeedleInsertionsInput = document.getElementById("guided-asm-num-needle-insertions");
+    const namesOfPointsInput = document.getElementById("guided-asm-names-of-points");
+    const depthOfInsertionInput = document.getElementById("guided-asm-depth-of-insertion");
+    const responsesSoughtInput = document.getElementById("guided-asm-responses-sought");
+    const needleStimulationInput = document.getElementById("guided-asm-needle-stimulation");
+    const needleRetentionTimeInput = document.getElementById("guided-asm-needle-retention-time");
+    const needleDiameterInput = document.getElementById("guided-asm-needle-diameter");
+    const needleLengthInput = document.getElementById("guided-asm-needle-length");
+    const needleManuMaterialInput = document.getElementById("guided-asm-needle-manufacturer-material");
+    const numTreatmentSessionsInput = document.getElementById("guided-asm-num-treatment-sessions");
+    const freqTreatmentSessionsInput = document.getElementById("guided-asm-freq-treatment-sessions");
+    const otherInterventionDetailsInput = document.getElementById("guided-asm-other-intervention-details");
+    const treatmentSettingInput = document.getElementById("guided-asm-treatment-setting");
+
+    const styleOfAcupuncture = styleOfAcupunctureInput.value.trim() || "";
+    const reasoningForTreatment = reasoningForTreatmentInput.value.trim() || "";
+    const extentTreatmentVaried = extentTreatmentVariedInput.value.trim() || "";
+    const numNeedleInsertions = numNeedleInsertionsInput.value.trim() || "";
+    const namesOfPoints = namesOfPointsInput.value.trim() || "";
+    const depthOfInsertion = depthOfInsertionInput.value.trim() || "";
+    const responsesSought = responsesSoughtInput.value.trim() || "";
+    const needleStimulation = needleStimulationInput.value.trim() || "";
+    const needleRetentionTime = needleRetentionTimeInput.value.trim() || "";
+    const needleDiameter = needleDiameterInput.value.trim() || "";
+    const needleLength = needleLengthInput.value.trim() || "";
+    const needleManuMaterial = needleManuMaterialInput.value.trim() || "";
+    const numTreatmentSessions = numTreatmentSessionsInput.value.trim() || "";
+    const freqTreatmentSessions = freqTreatmentSessionsInput.value.trim() || "";
+    const otherInterventionDetails = otherInterventionDetailsInput.value.trim() || "";
+    const treatmentSetting = treatmentSettingInput.value.trim() || "";
+
+    // const extentTreatmentVaried = useGlobalStore.getState().extentTreatmentVaried || "";
+
+    let requiredASMFields = [
+      styleOfAcupuncture,
+      numNeedleInsertions,
+      namesOfPoints,
+      needleStimulation,
+      needleDiameter,
+      needleLength,
+      needleManuMaterial,
+      numTreatmentSessions,
+      freqTreatmentSessions,
+      otherInterventionDetails
+    ];
+    let anyMissing = requiredASMFields.filter(e => e === "").length >= 1;
+
+    if (anyMissing) {
+      errorArray.push({
+        type: "notyf",
+        message: "Please add all required fields.",
+      });
+      throw errorArray;
+    }
+
+    // Populate dataset_metadata > acupoint_metadata
+    window.sodaJSONObj["dataset_metadata"]["acupoint_metadata"] = {
+      style_of_acupuncture: styleOfAcupuncture,
+      reasoning_for_treatment: reasoningForTreatment,
+      extent_treatment_varied: extentTreatmentVaried,
+      num_needle_insertions: numNeedleInsertions,
+      names_of_points: namesOfPoints,
+      depth_of_insertion: depthOfInsertion,
+      responses_sought: responsesSought,
+      needle_stimulation: needleStimulation,
+      needle_retention_time: needleRetentionTime,
+      needle_diameter: needleDiameter,
+      needle_length: needleLength,
+      needle_manufacturer_material: needleManuMaterial,
+      num_treatment_sessions: numTreatmentSessions,
+      freq_treatment_sessions: freqTreatmentSessions,
+      other_intervention_details: otherInterventionDetails,
+      treatment_setting: treatmentSetting
+    };
+  }
+
   if (pageBeingLeftID === "guided-submission-metadata-tab") {
     const userSelectedNIHFundingYes = isCheckboxCardChecked("submission-nih-funded-yes");
     const userSelectedNIHFundingNo = isCheckboxCardChecked("submission-nih-funded-no");

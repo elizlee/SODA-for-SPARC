@@ -299,6 +299,9 @@
             }
           }
         },
+        "acupoint-stimulation-metadata": {
+          "$ref": "acupoint_metadata.json"
+        },
         "submission-metadata": {
           "$ref": "submission_schema.json"
         },
