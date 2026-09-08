@@ -355,7 +355,7 @@ export const savePagePrepareMetadata = async (pageBeingLeftID, movingForward) =>
       needle_length: needleLength,
       needle_manufacturer_material: needleManuMaterial,
       num_treatment_sessions: numTreatmentSessions,
-      freq_treatment_sessions: freqTreatmentSessions,
+      frequency_treatment_sessions: freqTreatmentSessions,
       other_intervention_details: otherInterventionDetails,
       treatment_setting: treatmentSetting
     };
