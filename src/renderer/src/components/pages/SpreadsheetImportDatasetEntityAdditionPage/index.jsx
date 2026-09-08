@@ -64,23 +64,13 @@ const SpreadsheetImportDatasetEntityAdditionPage = () => {
       dependsOn: [],
       metadataFileName: "subjects.xlsx",
     },
-    samples: {
-      title: "Step 2: Sample IDs",
-      singular: "sample",
-      icon: <IconFlask size={24} />,
-      color: "cyan",
-      description: "Connect samples to subjects and provide sample metadata.",
-      dependsOn: ["subjects"], // Depends on subjects being imported first
-      sequence: 2,
-      metadataFileName: "samples.xlsx",
-    },
     sites: {
-      title: "Step 3: Site IDs",
+      title: "Step 2: Site IDs",
       singular: "site",
       icon: <IconPin size={24} />,
       color: "grape",
       description: "Define specific sites within subjects or samples.",
-      dependsOn: ["subjects", "samples"],
+      dependsOn: ["subjects"],
       metadataFileName: "sites.xlsx",
     },
   };
