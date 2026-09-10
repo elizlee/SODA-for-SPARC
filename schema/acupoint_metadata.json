@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "style_of_acupuncture": {
+      "type": "string",
+      "description": "The style of acupuncture used (e.g., Traditional Chinese Medicine, Japanese, Korean, Western medical, Five Element, ear acupuncture, etc.)."
+    },
+    "reasoning_for_treatment": {
+      "type": "string",
+      "description": "The reasoning for treatment provided, based on historical context, literature sources and/or consensus methods, with references where appropriate."
+    },
+    "extent_treatment_varied": {
+      "type": "string",
+      "description": "The extent to which treatment was varied."
+    },
+    "num_needle_insertions": {
+      "type": "string",
+      "description": "The number of needle insertions per subject per session (mean and range where relevant)."
+    },
+    "names_of_points": {
+      "type": "string",
+      "description": "The names (or location if no standard name) of points used (uni-/bilateral)."
+    },
+    "depth_of_insertion": {
+      "type": "string",
+      "description": "The depth of insertion, based on a specified unit of measurement or on a particular tissue level."
+    },
+    "responses_sought": {
+      "type": "string",
+      "description": "The responses sought (e.g. de qi or muscle twitch response)."
+    },
+    "needle_stimulation": {
+      "type": "string",
+      "description": "The needle stimulation (e.g., manual or electrical)."
+    },
+    "needle_retention_time": {
+      "type": "string",
+      "description": "The needle retention time."
+    },
+    "needle_diameter": {
+      "type": "string",
+      "description": "The needle diameter."
+    },
+    "needle_length": {
+      "type": "string",
+      "description": "The needle length."
+    },
+    "needle_manufacturer_material": {
+      "type": "string",
+      "description": "The needle manufacturer or material."
+    },
+    "num_treatment_sessions": {
+      "type": "string",
+      "description": "The number of treatment sessions."
+    },
+    "frequency_treatment_sessions": {
+      "type": "string",
+      "description": "The frequency and duration of treatment sessions."
+    },
+    "other_intervention_details": {
+      "type": "string",
+      "description": "The details of other interventions administered to the acupuncture group (e.g., moxibustion, cupping, herbs, exercises, lifestyle advice."
+    },
+    "treatment_setting": {
+      "type": "string",
+      "description": "The setting and context of treatment, including instructions to practitioners, and information and explanations to patients."
+    }
+  },
+  "required": []
+}

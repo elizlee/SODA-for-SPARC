@@ -347,6 +347,7 @@ export const reRenderTreeView = (resetOpenFolders = false) => {
         samples: "samples.xlsx",
         code_description: "code_description.xlsx",
         dataset_description: "dataset_description.xlsx",
+        acupoint_metadata: "acupoint_metadata.xlsx",
         performances: "performances.xlsx",
         resources: "resources.xlsx",
         sites: "sites.xlsx",

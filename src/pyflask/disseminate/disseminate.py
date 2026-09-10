@@ -212,6 +212,7 @@ METADATA_FILES = [
     "submission.xlsx", 
     "code_description.xlsx", 
     "dataset_description.xlsx", 
+    "acupoint_metadata.xlsx",
     "outputs_metadata.xlsx", 
     "inputs_metadata.xlsx", 
     "CHANGES.txt", 

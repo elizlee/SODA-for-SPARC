@@ -58,6 +58,11 @@ const metadataCardConfig = {
     required: true,
     labelText: "Contains metadata describing the dataset.",
   },
+  acupuncture_metadata: {
+    title: "acupoint_metadata.xlsx",
+    required: true,
+    labelText: "Contains metadata describing the acupoint stimulation associated with the dataset.",
+  },
   manifest: {
     title: "manifest.xlsx",
     required: true,

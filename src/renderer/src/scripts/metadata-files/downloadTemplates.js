@@ -14,6 +14,7 @@ const downloadMetadataFiles = document.getElementById("download-manifest-only-bt
 
 // If files are added or removed from the file_templates folder, update the templateArray and templateHighLvlFolders
 const templateArray = [
+  "acupoint_metadata.xlsx",
   "CHANGES",
   "code_description.xlsx",
   "code_parameters.xlsx",
