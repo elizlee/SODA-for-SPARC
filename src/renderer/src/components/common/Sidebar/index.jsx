@@ -33,12 +33,6 @@ const links = [
     icon: <IconBook size={20} color="black" />,
   },
   {
-    id: "account-view",
-    label: "Manage Accounts",
-    section: "account",
-    icon: <IconUser size={20} color="black" />,
-  },
-  {
     id: "contact-us-view",
     label: "Contact Us",
     section: "contact-us",
@@ -78,7 +72,7 @@ const Sidebar = ({ id }) => {
           <Stack align="center" mb="xl" gap="xs">
             <Image src="./img/logo-new-prim-7.png" alt="Logo" w={90} />
             <Text fw={800} size="xl" c="var(--mantine-color-primary-7)">
-              SODA
+              SODA for TARA
             </Text>
             <Badge
               fw={800}

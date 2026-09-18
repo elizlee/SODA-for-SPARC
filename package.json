@@ -1,6 +1,6 @@
 {
-  "name": "soda-for-sparc",
-  "productName": "SODA for SPARC",
+  "name": "soda-for-tara",
+  "productName": "SODA for TARA",
   "version": "19.0.0",
   "description": "Keep Calm and Curate",
   "main": "./out/main/index.js",
