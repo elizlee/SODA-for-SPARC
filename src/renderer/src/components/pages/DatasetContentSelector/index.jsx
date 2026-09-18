@@ -27,11 +27,10 @@ export const contentOptionsMap = {
     requiresAnswer: [],
     ml: 0,
   },
-  Code: {
+  code: {
     label: "Does your data include any software?",
     dropDownDescription:
       "Select yes if your data contains computational tools, scripts, or analysis pipelines that were used to generate or analyze your data. This includes custom code, analysis scripts, and simulation software relevant to understanding your results.",
-
     ml: 0,
   },
   protocol: {

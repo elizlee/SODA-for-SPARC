@@ -394,8 +394,7 @@ export const savePagePrepareMetadata = async (pageBeingLeftID, movingForward) =>
       if (fundingConsortiumDropDownValue !== "SPARC") {
         window.sodaJSONObj["dataset_metadata"]["submission"] = {
           consortium_data_standard: "SPARC", // Hardcoded for now (SODA only supports SPARC data standard)
-          funding_consortium:
-            fundingConsortiumDropDownValue === "Other" ? "" : fundingConsortiumDropDownValue,
+          funding_consortium: fundingConsortiumDropDownValue,
           award_number: awardNumber,
           milestone_achieved: [],
           milestone_completion_date: [],
