@@ -33,6 +33,12 @@ const links = [
     icon: <IconBook size={20} color="black" />,
   },
   {
+    id: "account-view",
+    label: "Manage Accounts",
+    section: "account",
+    icon: <IconUser size={20} color="black" />,
+  },
+  {
     id: "contact-us-view",
     label: "Contact Us",
     section: "contact-us",
