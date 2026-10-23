@@ -20,13 +20,9 @@ import api from "../../../others/api/api";
 export const savePageSharedWorkflowSteps = async (pageBeingLeftID, movingForward) => {
   const errorArray = [];
 
-  if (
-    pageBeingLeftID === "gm-pennsieve-login-tab" ||
-    pageBeingLeftID === "ffm-pennsieve-login-tab"
-  ) {
-    const prefix = pageBeingLeftID === "gm-pennsieve-login-tab" ? "gm" : "ffm";
-    const confirmAccountButtonId = `${prefix}-confirm-pennsieve-account-button`;
-    const confirmOrgButtonId = `${prefix}-confirm-pennsieve-organization-button`;
+  if (pageBeingLeftID === "ffm-pennsieve-login-tab") {
+    const confirmAccountButtonId = `ffm-confirm-pennsieve-account-button`;
+    const confirmOrgButtonId = `ffm-confirm-pennsieve-organization-button`;
 
     // Check if the user has confirmed their Pennsieve account
     const userConfirmedPennsieveAccount = isCheckboxCardChecked(confirmAccountButtonId);
@@ -111,7 +107,7 @@ export const savePageSharedWorkflowSteps = async (pageBeingLeftID, movingForward
 
     const pennsieveAgentChecksPassed = await window.getPennsieveAgentStatus();
     if (!pennsieveAgentChecksPassed) {
-      const agentCheckElementId = `${prefix}-mode-post-log-in-pennsieve-agent-check`;
+      const agentCheckElementId = `ffm-mode-post-log-in-pennsieve-agent-check`;
       window.unHideAndSmoothScrollToElement(agentCheckElementId);
       errorArray.push({
         type: "notyf",

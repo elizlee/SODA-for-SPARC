@@ -1,5 +1,5 @@
 appId: com.fairdataihub.sodaforsparc
-productName: SODA for SPARC
+productName: SODA for TARA
 directories:
   buildResources: build
 files:
@@ -15,7 +15,7 @@ asarUnpack:
   - resources/**
 win:
   icon: "app-icon/win/icon.ico"
-  executableName: SODA for SPARC
+  executableName: SODA for TARA
   extraResources:
     - from: ./file_templates
       to: ./file_templates

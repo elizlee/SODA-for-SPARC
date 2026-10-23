@@ -12,38 +12,10 @@ import { swalConfirmAction } from "../../../utils/swal-utils";
 import { guidedGetCurrentUserWorkSpace } from "../../../guided-mode/workspaces/workspaces";
 export const savePageGenerateDataset = async (pageBeingLeftID, movingForward) => {
   const errorArray = [];
-  if (pageBeingLeftID === "guided-dataset-generation-options-tab") {
-    const generateDatasetLocallyCardChecked = isCheckboxCardChecked("generate-dataset-locally");
-    const generateDatasetOnPennsieveCardChecked = isCheckboxCardChecked(
-      "generate-dataset-on-pennsieve"
-    );
-    if (!generateDatasetLocallyCardChecked && !generateDatasetOnPennsieveCardChecked) {
-      errorArray.push({
-        type: "notyf",
-        message: "You must select at least one dataset generation option.",
-      });
-      throw errorArray;
-    }
-    window.sodaJSONObj["generate-dataset-locally"] = generateDatasetLocallyCardChecked;
-    window.sodaJSONObj["generate-dataset-on-pennsieve"] = generateDatasetOnPennsieveCardChecked;
-
-    const localGenerationPageSetClass = "local-generation-page-set";
-    const pennsieveGenerationPageSetClass = "pennsieve-generation-page-set";
-    // If the user selected to generate the dataset locally, UnSkip the local generation page set
-    // Otherwise, skip it
-    if (generateDatasetLocallyCardChecked) {
-      guidedUnSkipPageSet(localGenerationPageSetClass);
-    } else {
-      guidedSkipPageSet(localGenerationPageSetClass);
-    }
-    // If the user selected to generate the dataset on Pennsieve, UnSkip the Pennsieve generation page set
-    // Otherwise, skip it
-    if (generateDatasetOnPennsieveCardChecked) {
-      guidedUnSkipPageSet(pennsieveGenerationPageSetClass);
-    } else {
-      guidedSkipPageSet(pennsieveGenerationPageSetClass);
-    }
-  }
+  
+  // UnSkip this page set class for now; removing it breaks the app
+  const localGenerationPageSetClass = "local-generation-page-set";
+  guidedUnSkipPageSet(localGenerationPageSetClass);
 
   if (pageBeingLeftID === "guided-pennsieve-settings-tab") {
     // Handle saving the Pennsieve dataset name

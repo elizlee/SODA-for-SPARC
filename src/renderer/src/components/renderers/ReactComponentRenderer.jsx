@@ -11,7 +11,6 @@ import SingleColumnTable from "../tables/singleColumn";
 import PennsieveAgentCheckDisplay from "../backgroundServices/PennsieveAgentCheckDisplay";
 import DatasetContentSelector from "../pages/DatasetContentSelector";
 import PerformanceIdManagementPage from "../pages/PerformanceIdManagement";
-import GenerateDatasetLocationSelectorPage from "../pages/GenerateDatasetLocationSelector";
 import GenerateDatasetPennsieveTargetPage from "../pages/GenerateDatasetPennsieveTarget";
 import ResourcesManagementPage from "../pages/ResourcesManagement";
 import LicenseSelectPage from "../pages/LicenseSelect";
@@ -261,9 +260,6 @@ const componentTypeRenderers = {
   },
   "dataset-content-selector": (componentSlot) => {
     renderComponent(componentSlot, <DatasetContentSelector />);
-  },
-  "generate-dataset-location-selector-page": (componentSlot) => {
-    renderComponent(componentSlot, <GenerateDatasetLocationSelectorPage />);
   },
   "pennsieve-generate-target-page": (componentSlot) => {
     const props = {
